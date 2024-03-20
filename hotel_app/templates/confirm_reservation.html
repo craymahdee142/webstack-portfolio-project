@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flashes-msg-container">
+        {% for category, message in messages %}
+        <div class="flashes-msg {{ category }}">
+            {{ message }}
+            <a href="#" class="delete-message" onclick="deleteMessage(event, this)">X</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}
+
+{% endblock %}

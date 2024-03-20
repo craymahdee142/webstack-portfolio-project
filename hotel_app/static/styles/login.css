@@ -1,0 +1,118 @@
+/* General resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Flash messages styling */
+.flashes-msg-container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.flashes-msg {
+  background-color: #f4f4f4;
+  color: #333;
+  border-left: 5px solid #007bff; /* Default blue for info messages */
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.flashes-msg .delete-message {
+  float: right;
+  cursor: pointer;
+  color: #333;
+}
+
+.flashes-msg.error {
+  border-color: #dc3545; /* Red for error messages */
+}
+
+.flashes-msg.success {
+  border-color: #28a745; /* Green for success messages */
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 50px); /* Adjust based on your header/footer */
+  padding: 15px;
+}
+
+/* Form box */
+.form-box {
+  background-color: #fff;
+  padding: 40px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.form-box label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-box input[type="text"],
+.form-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Checkbox */
+.checkbox {
+  margin-bottom: 20px;
+}
+
+.checkbox input {
+  margin-right: 5px;
+}
+
+p, a {
+  margin-top: 10px;
+}
+
+.register {
+  margin-top: -20px;
+  text-align: center;
+}
+
+/* Button */
+.btn-field {
+  text-align: center;
+}
+
+.btn-field button {
+  background-color: #2e4053;
+  color: white;
+  border: none;
+  padding: 9px 140px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-field button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,30 @@
+{% extends "admin/master.html" %}  
+
+{% block body %}
+
+<h2>Add Room Type</h2>
+<form action="{{ url_for('room_type.index') }}" method="post">
+    <div>
+        <label for="type_name">Type Name:</label>
+        <input type="text" id="type_name" name="type_name" required>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+    </div>
+    <div>
+        <label for="base_price">Base Price:</label>
+        <input type="number" id="base_price" name="base_price" step="0.01" required>
+    </div>
+    <div>
+        <label for="max_capacity">Max Capacity:</label>
+        <input type="number" id="max_capacity" name="max_capacity" required>
+    </div>
+    <div>
+        <label for="amenities">Amenities:</label>
+        <input type="text" id="amenities" name="amenities" required>
+    </div>
+    <button type="submit">Add Room Type</button>
+</form>
+{% endblock %}
+

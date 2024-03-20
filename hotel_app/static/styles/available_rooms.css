@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background for the page */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers .container horizontally */
+}
+
+.header {
+    width: 100%;
+    background-color: #ddd;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content within the header */
+}
+
+.container > div {
+    width: 50%;
+    padding: 15px;
+    margin: 20px 0; /* Increased the top and bottom margin for more separation */
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
+}
+
+.pagination {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.pagination a:hover, .pagination a:focus {
+    background-color: #0056b3;
+    border-color: #0046a2;
+}

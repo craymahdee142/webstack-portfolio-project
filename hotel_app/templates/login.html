@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head_css %}
+<!--Login css-->
+<link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='styles/login.css')}}"
+    />
+
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flashes-msg-container">
+        {% for category, message in messages %}
+        <div class="flashes-msg {{ category }}">
+            {{ message }}
+            <a href="#" class="delete-message" onclick="deleteMessage(event, this)">X</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}
+
+    <div class="container">
+        <form class="form-box" action="/user/login" method="POST" onsubmit="login(event)">
+            <h2 class="title">Login</h2>
+
+            
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required autocomplete="on" />
+            <br />
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="on" />
+
+            <div class="field">
+                <label class="checkbox">
+                    <input type="checkbox" name="remember">
+                    Remember me
+                </label>
+            
+            <div class="btn-field">
+                <button type="submit">Login</button>
+            </div>
+
+            <p>
+                Forget your password! <a href="reset_password_request">Click here</a>
+              </p>
+              <br />
+              <div class="register">
+                <a href="{{ url_for('main_bp.register') }}">Create new account</a>
+              </div>
+
+        </form>
+    </div>
+
+
+    <script>
+        function deleteMessage(event, element) {
+          // Prevent the default anchor action
+          event.preventDefault();
+          // remove the entire message block
+          element.closest(".flashes-msg").remove();
+        }
+      </script>
+
+{% endblock %}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome{% endblock %} - FlaskApp</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+
+    <!--Additional CSS files-->
+    <!--<link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='styles/base.css')}}"
+    />-->
+    {% block head_css %}{% endblock %}
+    <style>
+      /* Ensure full width with no margins or padding */
+      .full-width-navbar {
+        margin-left: 0;
+        margin-right: 0;
+        width: 99%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      /* Additional styling to ensure navbar contents are full width */
+      .navbar {
+        padding-left: 0;
+        padding-right: 0;
+        background-color: #2e86c1 !important;
+
+      }
+      /* Override container-fluid to ensure it has no padding or margin */
+      .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .nav-link,
+      .navbar-brand {
+        padding-left: 70px; /* Move navbar text to the right */
+      }
+
+      .navbar-brand,
+      li a {
+        color: #fff !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Bar 
+    <div class="bg-dark text-white">
+      <div class="container-fluid full-width-navbar">
+        <header class="py-3">
+          <p class="pp-h">+233541428389</p>
+        </header>
+      </div>
+    </div>
+  -->
+    <!-- Navigation -->
+    <div class="container-fluid full-width-navbar">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Hotal APP</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main_bp.home') }}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main_bp.about') }}"
+                >ABOUT</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main_bp.contact') }}"
+                >CONTACT</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main_bp.facilities') }}"
+                >FACILITIES</a
+              >
+            </li>
+            <!--
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main_bp.register') }}"
+                >REGISTER</a
+              >
+            </li>
+          -->
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main_bp.login') }}" style="margin-left: 620px;"
+                >LOGIN</a
+              >
+            </li>
+          </ul>
+        </div>
+
+      <!--Drawer Toggle button at the right side of the navbar-->
+      <!--<a href="javascript:void(0)" onclick="openDrawer()" class="me-3">&#9776:</a>-->
+        
+      </nav>
+    </div>
+
+    <!--Draweer section--
+    <div class="drawer" id="myDrawer">
+      <div class="drawer-item">
+        --Add images here-
+        <h3>{{ current_user.fullname }}</h3>
+      </div>
+
+      <div class="drawer-item">
+        <a href="#">....</a>
+      </div>
+
+      <div class="drawer-item">
+        <a href="#">....</a>
+      </div>
+
+      <div class="drawer-item">
+        <a href="#">....</a>      
+      </div>
+      
+      </div
+    -->
+    
+<div class="container">
+  <!-- Optional section for user greeting if logged in -->
+  {% if current_user.is_authenticated %}
+  <p>Hello, {{ current_user.username }}!</p>
+  <a href="{{ url_for('user_bp.logout') }}">Logout</a>
+  {% endif %} {% block content %}{% endblock %}
+</div>
+
+
+<script>
+  function openDrawer() {
+    document.getElementById("myDrawer").style.width = "325px";
+    // document.getElementById("myDrawer").style.color = "aqua";
+  }
+
+  function closeDrawer() {
+    document.getElementById("myDrawer").style.width = "0";
+  }
+</script>
+
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  </body>
+</html>

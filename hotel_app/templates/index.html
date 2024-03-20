@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block head_css %}
+<style>
+  /* Reset margin and padding for full width */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  /* Ensure container-fluid is full width with no padding */
+  .container-fluid {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .carousel-fullwidth .carousel-inner img {
+    width: 100%;
+    /* Optional: Adjust height to maintain aspect ratio or cover */
+    height: auto; /* or '100%' for cover effect, may cause cropping */
+  }
+  
+    /* For Webkit browsers like Chrome, Safari */
+    input[type="number"]::-webkit-inner-spin-button, 
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none !important;
+      margin: 0 !important;
+    }
+    
+    /* For Firefox */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    
+  
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!--Use container fluid to ensure full width-->
+<div class="container-fluid" style="margin: 0; padding: 0; width: 100%; margin-top: 15px;">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fullwidth" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div style="height: 390px;" class="carousel-inner">
+       
+      <div class="carousel-item active">
+        <img src="{{url_for('static', filename='images/img1.png')}}" class="d-block w-100" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static', filename='images/img2.png')}}" class="d-block w-100" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static', filename='images/img3.png')}}" class="d-block w-100" alt="Third slide">
+      </div>
+    </div>
+    <!-- Optionally, add carousel controls here -->
+</div>
+</div>
+<!--Check_In and Check_Out form-->
+
+<div class="container" style="background-color: #fff; width: 95%; margin-top: -40px; position: relative; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.2);">
+  <p style="color: #2e86c1; font-weight: bold; font-size: 18px; margin-top: 3px;">Check Booking Availability</p>
+  <form action="{{ url_for('reserve_bp.check_availability') }}" method="GET">
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="checkInDate">Check-In</label>
+        <input type="date" class="form-control" id="checkInDate" name="checkInDate" required>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="checkOutDate">Check-Out</label>
+        <input type="date" class="form-control" id="checkOutDate" name="checkOutDate" required>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="numOfAdults">Adults</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary decreaseButton" type="button">-</button>
+          </div>
+          <input type="number" class="form-control" id="numOfAdults" name="numOfAdults" min="1" value="1" required>
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary increaseButton" type="button">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="numOfChildren">Children</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary decreaseButton" type="button">-</button>
+          </div>
+          <input type="number" class="form-control" id="numOfChildren" name="numOfChildren" min="0" value="0" required>
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary increaseButton" type="button">+</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group col-md-2">
+        <label for="type_name">Select Room/Hall</label>
+        <select class="form-control" id="type_name" name="type_name" required>
+          <option value="standard">Standard Room</option>
+          <option value="deluxe">Deluxe Suite</option>
+          <option value="executive">Executive Suite</option>
+          <option value="hall">Hall</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-2">
+        <button type="submit" class="btn btn-primary" style="background-color: #2e4053; border: 1px solid #f1948a; margin-top: 32px;">Check Availability</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!--Hotel rooms-->
+<div class="container my-5">
+  <h2 class="mb-4" style="text-align: center; font-weight: bold; color: #21618c; margin-top: -25px;">OUR ROOMS</h2>
+  <div class="row">
+      <!-- Room 1 -->
+      <div class="col-md-4">
+          <div class="card">
+              <img src="{{ url_for('static', filename='images/del.png')}}" class="card-img-top" alt="Room 1">
+              <div class="card-body">
+                  <h5 class="card-title">Deluxe Room</h5>
+                  <p class="card-text">A luxurious room with a stunning view, king-sized bed, en-suite bathroom, and complimentary Wi-Fi.</p>
+                  <p class="card-text"><strong>Price per night:</strong> GH₵ 120</p>
+                  <p class="card-text">
+                      <strong>Reviews:</strong> 
+                      <span class="badge badge-success">4.5 Stars</span>
+                      <span class="ml-2">Based on 150 reviews</span>
+                  </p>
+                  <a href="#" class="btn btn-primary" style="background-color: #2e4053; border: 1px solid #f1948a;">Book Now</a>
+              </div>
+          </div>
+      </div>
+      <!-- Room 2 -->
+      <div class="col-md-4">
+          <div class="card">
+              <img src="{{ url_for('static', filename='images/exe.png')}}" class="card-img-top" alt="Room 2">
+              <div class="card-body">
+                  <h5 class="card-title">Executive Suite</h5>
+                  <p class="card-text">Spacious suite with a separate living area, work desk, mini-bar, and premium amenities.</p>
+                  <p class="card-text"><strong>Price per night:</strong> GH₵ 250</p>
+                  <p class="card-text">
+                      <strong>Reviews:</strong> 
+                      <span class="badge badge-success">4.8 Stars</span>
+                      <span class="ml-2">Based on 200 reviews</span>
+                  </p>
+                  <a href="#" class="btn btn-primary" style="background-color: #2e4053; border: 1px solid #f1948a;">Book Now</a>
+              </div>
+          </div>
+      </div>
+      <!-- Room 3 -->
+      <div class="col-md-4">
+          <div class="card">
+              <img src="{{ url_for('static', filename='images/std.png')}}" class="card-img-top" alt="Room 3">
+              <div class="card-body">
+                  <h5 class="card-title">Standard Room</h5>
+                  <p class="card-text">Comfortable and cozy room with all the essentials for a pleasant stay.</p>
+                  <p class="card-text"><strong>Price per night:</strong> GH₵ 90</p>
+                  <p class="card-text">
+                      <strong>Reviews:</strong> 
+                      <span class="badge badge-success">4.2 Stars</span>
+                      <span class="ml-2">Based on 100 reviews</span>
+                  </p>
+                  <a href="#" class="btn btn-primary" style="background-color: #2e4053; border: 1px solid #f1948a;">Book Now</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<script>
+  document.querySelectorAll('.increaseButton').forEach(button => {
+    button.addEventListener('click', function () {
+      let input = this.parentNode.previousElementSibling;
+      let currentValue = parseInt(input.value);
+      input.value = currentValue + 1;
+    });
+  });
+
+  document.querySelectorAll('.decreaseButton').forEach(button => {
+    button.addEventListener('click', function () {
+      let input = this.parentNode.nextElementSibling;
+      let currentValue = parseInt(input.value);
+      if (currentValue > input.min) { // Use the min attribute of the input to check
+        input.value = currentValue - 1;
+      }
+    });
+  });
+</script>
+
+{% endblock %}

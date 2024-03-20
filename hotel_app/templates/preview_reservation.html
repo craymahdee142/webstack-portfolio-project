@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/preview_reservation.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3>Reservation Preview</h3>
+
+    {% if guest %}
+        <p>Guest ID: {{ guest }}</p>
+    {% else %}
+        <p>Guest ID not found</p>
+    {% endif %}
+    <p>Check-in Date: {{ reservation.check_in_date }}</p>
+    <p>Check-out Date: {{ reservation.check_out_date }}</p>
+    <p>Room Number: {{ room.room_number }}</p>
+    <p>Number of Adults: {{ reservation.num_of_adults }}</p>
+    <p>Number of Children: {{ reservation.num_of_children }}</p>
+
+    <p>Special Requests:</p>
+    <form action="{{ url_for('reserve_bp.confirm_reservation') }}" method="post">
+        <textarea name="special_req">{{ reservation.special_req }}</textarea>
+        <input type="submit" value="Confirm Reservation">
+    </form>
+</div>
+{% endblock %}
