@@ -48,7 +48,7 @@
 
       .nav-link,
       .navbar-brand {
-        padding-left: 70px; /* Move navbar text to the right */
+        /* padding-left: 70px; /* Move navbar text to the right */ */
       }
 
       .navbar-brand,
@@ -106,6 +106,11 @@
                 >FACILITIES</a
               >
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main_bp.login') }}"
+                >LOGIN</a
+              >
+            </li>
             <!--
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main_bp.register') }}"
@@ -113,27 +118,10 @@
               >
             </li>
           -->
-
             <li class="nav-item">
-              {% if current_user.is_authenticated %}
-              <p
-                style="
-                  margin-left: 500px;
-                  padding: 0 10px;
-                  margin-top: 10px;
-                  color: gold;
-                "
-              >
-                Hello, {{ current_user.username }}!
-              </p>
-              {% else %}
-              <a
-                class="nav-link"
-                href="{{ url_for('main_bp.login') }}"
-                style="margin-left: 600px"
+              <a class="nav-link" href="{{ url_for('main_bp.login') }}" style="margin-left: 620px;"
                 >LOGIN</a
               >
-              {% endif %}
             </li>
           </ul>
           <!--Right toggle offcanvas for dashboard-->

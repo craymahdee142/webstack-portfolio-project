@@ -137,6 +137,5 @@ def create_app(config_class=Config):
     # Image Blue print
     from .views.image_view import image_bp
     app.register_blueprint(image_bp)
-    
-   
+       
     return app
