@@ -1,5 +1,70 @@
 {% extends "base.html" %}
 
+{% block head_css %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/about.css')}}" >
+{% endblock %}
+
 {% block content %}
+<article>
+    <header>
+      <h2>About Us</h2>
+    </header>
+  
+    <section>
+      Welcome to <strong>DL HOTEL</strong>, the ultimate gateway to your
+      dream destinations. Founded in <strong>2023</strong>, our mission is to
+      transform the way travelers discover, book, and enjoy hotels across the
+      globe. With a commitment to excellence and a passion for exploration, we've
+      designed an app that caters to the needs of every traveler, from the
+      adventurous explorer seeking unique experiences to the business executive
+      looking for luxury and convenience.
+  
+      <p>
+        At <strong>DL HOTEL</strong>, we believe that staying in a hotel
+        should be much more than just a place to rest. It's about experiencing the
+        local culture, indulging in world-class amenities, and creating memories
+        that last a lifetime. That's why we've partnered with a diverse range of
+        hotels, from quaint boutique establishments in hidden corners of the world
+        to majestic resorts in the most sought-after destinations. Each hotel is
+        carefully selected for its unique charm, exceptional service, and
+        commitment to quality.
+      </p>
+  
+      <p>
+        Our innovative platform makes it easy for you to browse and book your
+        perfect stay. Whether you're planning a last-minute getaway or a
+        long-awaited vacation, <strong>DL HOTEL</strong> offers seamless
+        navigation, personalized recommendations, and exclusive deals to ensure
+        your trip is everything you've ever dreamed of and more.
+      </p>
+  
+      <p>
+        But we're more than just a booking app.
+        <strong>DL HOTEL</strong> is your trusted travel companion,
+        offering insider tips, local guides, and 24/7 customer support to ensure
+        your experience is smooth and enjoyable from start to finish. We're
+        constantly evolving, incorporating user feedback, and adopting the latest
+        technology to enhance our services and exceed your expectations.
+      </p>
+  
+      <p>
+        Behind <strong>DL HOTEL</strong> is a team of passionate travel
+        enthusiasts, tech innovators, and hospitality experts dedicated to
+        revolutionizing the way you travel. We're driven by a shared desire to
+        empower our users to explore the world with confidence and ease.
+      </p>
+  
+      <p>
+        Join us on this journey to discover new places, meet new faces, and make
+        unforgettable memories. With <strong>DL HOTEL</strong>, your next
+        extraordinary stay is just a click away.
+      </p>
+  
+      <footer>
+        <p>Welcome aboard,</p>
+        <p>The <strong>DL HOTEL</strong> Team</p>
+      </footer>
+    </section>
+  </article>
 
 {% endblock %}

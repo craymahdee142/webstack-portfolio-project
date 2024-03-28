@@ -1,25 +1,59 @@
-.drawer {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0; /* Align to the right */
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s; /* Smooth transition */
-    padding-top: 60px;
-}
-
-.drawer a {
-    padding: 8px 8px 8px 32px;
+.offcanvas {
+    background-color: #f1f1f1; 
+    color: #333; /* Darker text for better readability */
+  }
+  
+  .offcanvas-header {
+    background-color: #273746; /* Bootstrap primary color */
+    color: #fff; 
+    padding: 1.4rem; 
+  }
+  
+  .offcanvas-title {
+    margin: 0; 
+    font-weight: bold; 
+  }
+  
+  .btn-close {
+    filter: invert(1); /* Inverts the color for better visibility against dark backgrounds */
+  }
+  
+  .drawer-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px; 
+    transition: background-color 0.4s, color 0.3s; 
+  }
+  
+  .drawer-item img {
+    margin-right: 10px;
+    width: 24px; 
+    height: auto; 
+  }
+  
+  .drawer-item a, .drawer-item h3 {
+    padding: 10px 15px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 16px; 
+    color: #333; 
     display: block;
-    transition: 0.3s;
-}
-
-.drawer a:hover {
+    width: 100%; 
+  }
+  
+  .drawer-item.logout:hover, 
+  .drawer-item.passkey:hover, 
+  .drawer-item.close:hover, 
+  .drawer-item.about:hover {
     color: #f1f1f1;
-}
+    background-color: #21F921; 
+  }
+   
+  /* styling for the links */
+  .drawer-item a:hover {
+    text-decoration: underline; 
+  }
+  
+  .drawer-item.logout img {
+    filter: invert(1); /* Makes the logout icon white for better visibility on dark backgrounds */
+  }
+  

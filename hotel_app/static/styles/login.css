@@ -10,42 +10,12 @@ body, html {
   font-family: 'Arial', sans-serif;
 }
 
-/* Flash messages styling */
-.flashes-msg-container {
-  width: 90%;
-  margin: 20px auto;
-  padding: 10px;
-}
-
-.flashes-msg {
-  background-color: #f4f4f4;
-  color: #333;
-  border-left: 5px solid #007bff; /* Default blue for info messages */
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.flashes-msg .delete-message {
-  float: right;
-  cursor: pointer;
-  color: #333;
-}
-
-.flashes-msg.error {
-  border-color: #dc3545; /* Red for error messages */
-}
-
-.flashes-msg.success {
-  border-color: #28a745; /* Green for success messages */
-}
-
 /* Container */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 50px); /* Adjust based on your header/footer */
+  height: calc(100% - 20px);
   padding: 15px;
 }
 
@@ -89,13 +59,34 @@ body, html {
   margin-right: 5px;
 }
 
-p, a {
-  margin-top: 10px;
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.checkbox-container {
+  /* This ensures the checkbox label aligns nicely with the reset link */
+  display: flex;
+  align-items: center;
+}
+
+.reset-container a {
+  text-decoration: none;
+  color: rgb(189, 23, 23);
+  padding-bottom: 5px;
+
+}
+
 
 .register {
   margin-top: -20px;
   text-align: center;
+}
+
+.register a {
+  color: rgb(189, 23, 23);
+  text-decoration: none;
 }
 
 /* Button */

@@ -1,56 +1,87 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block head_css %}
+<!--Register css-->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{url_for('static', filename='styles/register.css')}}"
+/>
 
-{% block content %}
+{% endblock %} {% block content %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    <div class="flashes-msg-container">
-        {% for category, message in messages %}
-        <div class="flashes-msg {{ category }}">
-            {{ message }}
-            <a href="#" class="delete-message" onclick="deleteMessage(event, this)">X</a>
-        </div>
-        {% endfor %}
+<!--To retrieve Flash messages-->
+{% include "flash_message.html" %}
+
+<div class="container">
+  <form
+    class="form-box"
+    action="/user/register"
+    method="POST"
+    onsubmit="register(event)"
+  >
+    <h2 class="title">Register</h2>
+
+    <label for="fullname">Full Name</label>
+    <input
+      type="text"
+      id="fullname"
+      name="fullname"
+      required
+      autocomplete="on"
+    />
+    <br />
+    <label for="username">User Name</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      required
+      autocomplete="on"
+    />
+    <br />
+    <label for="phone_number">Phone Number</label>
+    <input
+      type="text"
+      id="phone_number"
+      name="phone_number"
+      required
+      autocomplete="tel"
+      placeholder="+1 234 567 8900"
+    />
+    <br />
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" required autocomplete="email" />
+    <br />
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      autocomplete="new-password"
+    />
+    <br />
+    <label for="confirmed_password">Confirmed Password</label>
+    <input
+      type="password"
+      id="confirmed_password"
+      name="confirmed_password"
+      required
+      autocomplete="confirmed_password"
+    />
+
+    <div class="btn-field">
+      <button type="submit">Register</button>
     </div>
-    {% endif %}
-{% endwith %}
+  </form>
+</div>
 
-    <div class="container">
-        <form class="form-box" action="/user/register" method="POST" onsubmit="register(event)">
-            <h2 class="title">Register</h2>
-
-            <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullname" required autocomplete="on" />
-            <br />
-            <label for="username">User Name</label>
-            <input type="text" id="username" name="username" required autocomplete="on" />
-            <br />
-            <label for="phone_number">Phone Number</label>
-            <input type="text" id="phone_number" name="phone_number" required autocomplete="tel" placeholder="+1 234 567 8900" />
-            <br />
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" required autocomplete="email" />
-            <br />
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required autocomplete="new-password" />
-            <br />
-            <label for="confirmed_password">Confirmed Password</label>
-            <input type="password" id="confirmed_password" name="confirmed_password" required autocomplete="confirmed_password" />
-
-            <div class="btn-field">
-                <button type="submit">Register</button>
-            </div>
-        </form>
-    </div>
-
-    
-    <script>
-        function deleteMessage(event, element) {
-          // Prevent the default anchor action
-          event.preventDefault();
-          // remove the entire message block
-          element.closest(".flashes-msg").remove();
-        }
-      </script>
+<script>
+  function deleteMessage(event, element) {
+    // Prevent the default anchor action
+    event.preventDefault();
+    // remove the entire message block
+    element.closest(".flashes-msg").remove();
+  }
+</script>
 
 {% endblock %}

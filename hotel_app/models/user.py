@@ -20,6 +20,7 @@ class User(BaseModel, UserMixin):
     password = db.Column(db.String(250), nullable=False)
     is_admin = db.Column(db.Boolean, nullable=False, default=False)
     is_confirmed = db.Column(db.Boolean, nullable=False, default=False)
+    image = db.Column(db.String(255), nullable=True)
     
     # Password reset fields
     reset_token = db.Column(db.String(128), nullable=True)
@@ -54,10 +55,11 @@ class User(BaseModel, UserMixin):
         return user
     
 
-    def __init__(self, fullname, username, phone_number, email, password, is_admin=False, is_confirmed=False):
+    def __init__(self, fullname, username, phone_number, image, email, password, is_admin=False, is_confirmed=False):
         self.fullname = fullname
         self.username = username
         self.phone_number = phone_number
+        self.image = image
         self.email = email
         self.is_admin = is_admin
         self.is_confirmed = is_confirmed

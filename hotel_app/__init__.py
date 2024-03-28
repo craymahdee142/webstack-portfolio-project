@@ -3,13 +3,21 @@ from config import Config
 from .extensions import db, bcrypt, login_manager, mail, migrate
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-#from flask_admin import 
 from hotel_app.views.roomtype_view import RoomTypeView
 from hotel_app.views.rooms_view import RoomView
+import os
 
 
 def create_app(config_class=Config):
     app = Flask(__name__, static_url_path='/static')
+    
+    UPLOAD_FOLDER = os.path.join(app.root_path, 'static', 'upload_folder')
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    
+    # Ensure the UPLOAD_FOLDER exists
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
+    
     app.config.from_object(config_class)
     
     # Initialize extensions with the app
@@ -33,7 +41,6 @@ def create_app(config_class=Config):
     
     # Admin User Model view
   
-    
     #admin.add_view(ModelView(User, db.session, name='user'))
     
     # Models imports

@@ -1,0 +1,22 @@
+article {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  header h2 {
+    color: #333;
+    text-align: center;
+  }
+  section {
+    text-align: justify;
+    line-height: 1.6;
+  }
+  footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }

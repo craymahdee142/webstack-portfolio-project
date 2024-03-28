@@ -4,6 +4,7 @@ from flask_mail import Message
 
 utils_bp = Blueprint('utils_bp', __name__)
 
+
 # Sending confirmation mail
 def send_confirmation_email(user_email, user):
     try:

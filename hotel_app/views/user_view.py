@@ -127,7 +127,7 @@ def login():
                 return redirect(url_for('user_bp.login'))
 
         else:
-            flash("Invalid email or password", 'danger')
+            flash("Invalid email or password", 'error')
             current_app.logger.warning(f"Failed login attempt for {email}")
 
     return render_template("login.html")

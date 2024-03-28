@@ -174,7 +174,7 @@ def confirm_reservation():
     guest_id = session.get('guest_id')
     if not guest_id:
         flash("Guest identification is missing.", "error")
-        return redirect(url_for('reserve_bp.preview_reservation'))
+        return redirect(url_for('reserve_bp.confirm_reservation'))
     
     try:
         guest = Guest.query.get(guest_id)
@@ -220,4 +220,4 @@ def confirm_reservation():
 def confirm():
     return render_template("confirm_reservation.html")
 
-    
+
