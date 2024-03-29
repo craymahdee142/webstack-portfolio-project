@@ -7,6 +7,7 @@ from ..extensions import db
 from datetime import datetime
 from sqlalchemy import and_, not_, or_, exists
 from flask import session
+from flask_login import current_user, login_required
 
 reserve_bp = Blueprint('reserve_bp', __name__)
 
@@ -160,6 +161,10 @@ def preview_reservation():
 # Confirm reservation
 @reserve_bp.route('/confirm_reservation', methods=['POST'])
 def confirm_reservation():
+    if not current_user.is_authenticated:
+        flash("You need to login in to make reservation!", 'error')
+        return redirect(url_for('main_bp.login'))
+    
     if 'reservation_details' not in session:
         flash("No reservation details to confirm.", "error")
         return redirect(url_for('reserve_bp.select_room'))

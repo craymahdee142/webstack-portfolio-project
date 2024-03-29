@@ -58,22 +58,29 @@
     </style>
   </head>
   <body>
-
     <!-- Header Bar -->
-    <div class="bg-dark text-white" style="height: 25px;">
+    <div class="bg-dark text-white" style="height: 25px">
       <div class="container-fluid full-width-navbar">
         <header class="py-3">
-          <p style="margin-top: -15px; margin-left: 60px;">Tel: +233541434043 |</p>
-          <p style="margin-top: -40px; margin-left: 220px;">email: dlhotel@gmail.com</p>
+          <p style="margin-top: -15px; margin-left: 60px">
+            Tel: +233541434043 |
+          </p>
+          <p style="margin-top: -40px; margin-left: 220px">
+            email: dlhotel@gmail.com
+          </p>
         </header>
       </div>
     </div>
-  
 
     <!-- Navigation -->
     <div class="container-fluid full-width-navbar">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#" style="margin-top: -10px">DL HOTEL</a>
+        <a
+          class="navbar-brand"
+          href="#"
+          style="margin-left: 60px"
+          >DL HOTEL</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -106,11 +113,7 @@
                 >FACILITIES</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main_bp.login') }}"
-                >LOGIN</a
-              >
-            </li>
+            
             <!--
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main_bp.register') }}"
@@ -119,9 +122,17 @@
             </li>
           -->
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main_bp.login') }}" style="margin-left: 620px;"
+              {% if current_user.is_authenticated %}
+              <span style="margin-left: 510px; color: gold;" class="nav-link">Hello, {{ current_user.username }}</span>
+              {% else %}
+              <a
+                class="nav-link"
+                href="{{ url_for('main_bp.login') }}"
+                style="margin-left: 580px"
                 >LOGIN</a
               >
+              
+              {% endif %}
             </li>
           </ul>
           <!--Right toggle offcanvas for dashboard-->
@@ -132,7 +143,7 @@
             data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight"
             style="
-              margin-right: 35px;
+              margin-right: 50px;
               margin-top: 5px;
               background-color: #f1f1f1;
               color: #333;
@@ -154,9 +165,17 @@
       aria-labelledby="offcanvasRightLabel"
     >
       <div class="offcanvas-header">
-        <img src="{{ url_for('static', filename='upload_folder/' + (current_user.image if current_user.image else 'person.png')) }}" style="width: 60px; height: 50px; border-radius: 50%;" alt="User Image">        
-        
-        <h5 class="offcanvas-title" id="offcanvasRightLabel" style="margin-right: 80px;">
+        <img
+          src="{{ url_for('static', filename='upload_folder/' + (current_user.image if current_user.image else 'person.png')) }}"
+          style="width: 60px; height: 50px; border-radius: 50%"
+          alt="User Image"
+        />
+
+        <h5
+          class="offcanvas-title"
+          id="offcanvasRightLabel"
+          style="margin-right: 80px"
+        >
           {{ current_user.fullname }}
         </h5>
         <button
@@ -168,14 +187,14 @@
       </div>
 
       <!--Image upload-->
-      
+
       <div class="drawer-item">
         <form action="/upload" method="POST" enctype="multipart/form-data">
           <input type="file" id="image-upload" name="image" accept="image/*" />
           <button type="submit" class="btn btn-primary mt-2">Upload</button>
         </form>
       </div>
-    
+
       <div class="drawer-item passkey">
         <img
           src="{{url_for('static', filename='images/passkey.png')}}"
